@@ -1,12 +1,18 @@
 <?php
-/* 
-Plugin Name: InfiniteWP - Client
-Plugin URI: http://infinitewp.com/
-Description: This is the client plugin of InfiniteWP that communicates with the InfiniteWP Admin panel.
-Author: Revmakx
+/*
+Plugin Name: Chris Roemmich Web Developent Client
+Plugin URI: https://cr-wd.com
+Description: Maintenance and support plugin used by Chris Roemmich Web Development.
+Author: croemmich
 Version: 1.1.10
-Author URI: http://www.revmakx.com
+Author URI: https://cr-wd.com
 */
+
+/************************************************************
+ * The plugin was modified by croemmich
+ * Copyright (c) 2013 croemmich
+ ************************************************************/
+
 /************************************************************
  * This plugin was modified by Revmakx						*
  * Copyright (c) 2012 Revmakx								*
