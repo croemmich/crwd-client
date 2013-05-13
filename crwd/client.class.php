@@ -43,7 +43,7 @@ class CRWD_CLIENT {
     function map_meta_cap($caps, $cap, $user_id, $args) {
         // disallow plugin editor
         if ($cap == 'edit_plugins') {
-            return [];
+            $caps[] = 'do_not_allow';
         }
         return $caps;
     }
