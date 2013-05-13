@@ -14,9 +14,9 @@ class CRWD_CLIENT {
 
         if ( is_admin() ) {
 
-            $config = array(
-                'slug' => 'crwd-client',
-                'proper_folder_name' => 'crwd-client',
+            new CRWP_GitHub_Updater( array(
+                'slug' => plugin_basename(IWP_MMB_PLUGIN_DIR).'/'.'init.php',
+                'proper_folder_name' => plugin_basename(IWP_MMB_PLUGIN_DIR),
                 'api_url' => 'https://api.github.com/repos/croemmich/crwd-client',
                 'raw_url' => 'https://raw.github.com/croemmich/crwd-client/master/init.php',
                 'github_url' => 'https://github.com/croemmich/crwd-client',
@@ -26,10 +26,7 @@ class CRWD_CLIENT {
                 'tested' => '3.5',
                 'readme' => 'README.md',
                 'access_token' => '',
-            );
-
-            new CRWP_GitHub_Updater( $config );
-
+            ));
         }
     }
 
@@ -43,4 +40,8 @@ class CRWD_CLIENT {
     }
 
 }
+
+if(!defined('IWP_MMB_PLUGIN_DIR'))
+    define('IWP_MMB_PLUGIN_DIR', $iwp_mmb_plugin_dir);
+
 new CRWD_CLIENT();
