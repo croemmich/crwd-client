@@ -6,6 +6,8 @@ class CRWD_CLIENT {
         add_action('init', array($this, 'github_updater'));
         add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets'));
         add_filter('map_meta_cap', array($this, 'map_meta_cap'), 10, 4 );
+
+        $this->fix_autologin();
     }
 
     function github_updater() {
@@ -46,6 +48,27 @@ class CRWD_CLIENT {
             $caps[] = 'do_not_allow';
         }
         return $caps;
+    }
+
+    function fix_autologin() {
+        if (!empty($_GET['redirect_to'])) {
+            $query = parse_url($_GET['redirect_to'], PHP_URL_QUERY);
+            parse_str($query, $params);
+
+            if (!empty($params['auto_login'])) {
+                foreach($params as $key=>$value) {
+                    $_GET[$key] = $value;
+                    $_REQUEST[$key] = $value;
+                }
+                $_GET['iwpredirect'] = admin_url();
+                $_REQUEST['iwpredirect'] = admin_url();
+                $unset = array('redirect_to', 'reauth');
+                foreach($unset as $u) {
+                    unset($_GET[$u]);
+                    unset($_REQUEST[$u]);
+                }
+            }
+        }
     }
 
 }
