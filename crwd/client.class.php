@@ -28,7 +28,7 @@ class CRWD_CLIENT {
                 'access_token' => '',
             );
 
-            new WP_GitHub_Updater( $config );
+            new CRWP_GitHub_Updater( $config );
 
         }
     }

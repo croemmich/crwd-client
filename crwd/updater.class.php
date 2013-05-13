@@ -1,7 +1,7 @@
 <?php
 
 // Prevent loading this file directly and/or if the class is already defined
-if ( ! defined( 'ABSPATH' ) || class_exists( 'WPGitHubUpdater' ) || class_exists( 'WP_GitHub_Updater' ) )
+if ( ! defined( 'ABSPATH' ) || class_exists( 'CRWPGitHubUpdater' ) || class_exists( 'CRWP_GitHub_Updater' ) )
     return;
 
 /************************************************************
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) || class_exists( 'WPGitHubUpdater' ) || class_exists
  * @version 1.6
  * @author Joachim Kudish <info@jkudish.com>
  * @link http://jkudish.com
- * @package WP_GitHub_Updater
+ * @package CRWP_GitHub_Updater
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @copyright Copyright (c) 2011-2013, Joachim Kudish
  *
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) || class_exists( 'WPGitHubUpdater' ) || class_exists
  */
 
 
-class WP_GitHub_Updater {
+class CRWP_GitHub_Updater {
 
     /**
      * GitHub Updater version
