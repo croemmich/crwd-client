@@ -32,7 +32,7 @@ Author URI: https://cr-wd.com
  **************************************************************/
 
 if(!defined('IWP_MMB_CLIENT_VERSION'))
-	define('IWP_MMB_CLIENT_VERSION', '1.1.10');
+	define('IWP_MMB_CLIENT_VERSION', '1.1.10.1');
 
 
 if ( !defined('IWP_MMB_XFRAME_COOKIE')){

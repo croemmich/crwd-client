@@ -5,6 +5,7 @@ class CRWD_CLIENT {
     function __construct() {
         add_action('init', array($this, 'github_updater'));
         add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets'));
+        add_filter('map_meta_cap', array($this, 'map_meta_cap'), 10, 4 );
     }
 
     function github_updater() {
@@ -37,6 +38,14 @@ class CRWD_CLIENT {
         unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
         unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
         unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+    }
+
+    function map_meta_cap($caps, $cap, $user_id, $args) {
+        // disallow plugin editor
+        if ($cap == 'edit_plugins') {
+            return [];
+        }
+        return $caps;
     }
 
 }
