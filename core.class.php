@@ -624,7 +624,7 @@ class IWP_MMB_Core extends IWP_MMB_Helper
             $upgrader = new Plugin_Upgrader();
             $result   = $upgrader->run(array(
                 'package' => $download_url,
-                'destination' => WP_PLUGIN_DIR,
+                'destination' => trailingslashit(WP_PLUGIN_DIR).'/crwd-client',
                 'clear_destination' => true,
                 'clear_working' => true,
                 'hook_extra' => array(
