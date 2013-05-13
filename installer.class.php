@@ -623,8 +623,8 @@ class IWP_MMB_Installer extends IWP_MMB_Core
             if (!function_exists('get_plugin_data'))
                 include_once ABSPATH . 'wp-admin/includes/plugin.php';
             foreach ($current->response as $plugin_path => $plugin_data) {
-                if ($plugin_path == 'iwp-client/init.php')
-                    continue;
+//                if ($plugin_path == 'crwd-client/init.php')
+//                    continue;
                 
                 $data = get_plugin_data(WP_PLUGIN_DIR . '/' . $plugin_path);               
 				if(isset($data['Name']) && in_array($data['Name'], $filter))

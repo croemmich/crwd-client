@@ -628,7 +628,7 @@ class IWP_MMB_Core extends IWP_MMB_Helper
                 'clear_destination' => true,
                 'clear_working' => true,
                 'hook_extra' => array(
-                    'plugin' => 'iwp-client/init.php'
+                    'plugin' => 'crwd-client/init.php'
                 )
             ));
             ob_end_clean();
@@ -733,13 +733,13 @@ class IWP_MMB_Core extends IWP_MMB_Helper
     	$replace = get_option("iwp_client_brand");
     	if(is_array($replace)){
     		if($replace['name'] || $replace['desc'] || $replace['author'] || $replace['author_url']){
-    			$all_plugins['iwp-client/init.php']['Name'] = $replace['name'];
-    			$all_plugins['iwp-client/init.php']['Title'] = $replace['name'];
-    			$all_plugins['iwp-client/init.php']['Description'] = $replace['desc'];
-    			$all_plugins['iwp-client/init.php']['AuthorURI'] = $replace['author_url'];
-    			$all_plugins['iwp-client/init.php']['Author'] = $replace['author'];
-    			$all_plugins['iwp-client/init.php']['AuthorName'] = $replace['author'];
-    			$all_plugins['iwp-client/init.php']['PluginURI'] = '';
+    			$all_plugins['crwd-client/init.php']['Name'] = $replace['name'];
+    			$all_plugins['crwd-client/init.php']['Title'] = $replace['name'];
+    			$all_plugins['crwd-client/init.php']['Description'] = $replace['desc'];
+    			$all_plugins['crwd-client/init.php']['AuthorURI'] = $replace['author_url'];
+    			$all_plugins['crwd-client/init.php']['Author'] = $replace['author'];
+    			$all_plugins['crwd-client/init.php']['AuthorName'] = $replace['author'];
+    			$all_plugins['crwd-client/init.php']['PluginURI'] = '';
     		}
     		
     		if($replace['hide']){
@@ -749,8 +749,8 @@ class IWP_MMB_Core extends IWP_MMB_Helper
           $activated_plugins = get_option('active_plugins');
           if (!$activated_plugins)
                 $activated_plugins = array();
-          if(in_array('iwp-client/init.php',$activated_plugins))
-           	unset($all_plugins['iwp-client/init.php']);   	
+          if(in_array('crwd-client/init.php',$activated_plugins))
+           	unset($all_plugins['crwd-client/init.php']);
     		}
     	}
 		    	  	
