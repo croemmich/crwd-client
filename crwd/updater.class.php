@@ -351,8 +351,6 @@ class CRWP_GitHub_Updater {
             if ( false !== $response ) {
                 $transient->response[ $this->config['slug'] ] = $response;
             }
-
-            var_dump($transient);
         }
 
         return $transient;
