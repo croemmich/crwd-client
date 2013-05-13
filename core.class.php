@@ -634,10 +634,8 @@ class IWP_MMB_Core extends IWP_MMB_Helper
             ob_end_clean();
 			@wp_update_plugins();
 
-            set_transient('_site_transient_update_plugins', '');
-
             delete_site_transient('update_plugins');
-            wp_cache_delete( 'plugins', 'plugins' );
+            wp_cache_delete('plugins', 'plugins');
 			
             if (is_wp_error($result) || !$result) {
                 return array(
