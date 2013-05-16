@@ -73,8 +73,12 @@ class CRWD_CLIENT {
     }
 
     function cleanup_plugins() {
-        // remove gravityforms nag
-        remove_all_actions('after_plugin_row_gravityforms/gravityforms.php');
+        // gravityforms
+        remove_action('after_plugin_row_gravityforms/gravityforms.php', array('RGForms', 'plugin_row'));
+
+        // ultimate-tinymce
+        remove_filter('plugin_row_meta', 'jwl_execphp_donate_link');
+        remove_action('admin_print_styles', 'jwl_admin_style');
     }
 
 }
