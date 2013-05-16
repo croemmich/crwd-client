@@ -1,25 +1,51 @@
 <?php
 
-class CRWD_CLIENT {
+class CRWD_CLIENT
+{
 
-    function __construct() {
+    function __construct()
+    {
         add_action('init', array($this, 'github_updater'));
         add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets'));
-        add_filter('map_meta_cap', array($this, 'map_meta_cap'), 10, 4 );
+        add_filter('map_meta_cap', array($this, 'map_meta_cap'), 10, 4);
         add_action('wp_loaded', array($this, 'cleanup_plugins'), 20);
+        add_filter("mce_buttons", array($this, "edit_mce_buttons"));
 
         $this->fix_autologin();
     }
 
-    function github_updater() {
+    function fix_autologin()
+    {
+        if (!empty($_GET['redirect_to'])) {
+            $query = parse_url($_GET['redirect_to'], PHP_URL_QUERY);
+            parse_str($query, $params);
+
+            if (!empty($params['auto_login'])) {
+                foreach ($params as $key => $value) {
+                    $_GET[$key] = $value;
+                    $_REQUEST[$key] = $value;
+                }
+                $_GET['iwpredirect'] = admin_url();
+                $_REQUEST['iwpredirect'] = admin_url();
+                $unset = array('redirect_to', 'reauth');
+                foreach ($unset as $u) {
+                    unset($_GET[$u]);
+                    unset($_REQUEST[$u]);
+                }
+            }
+        }
+    }
+
+    function github_updater()
+    {
         require_once 'updater.class.php';
 
-        define( 'WP_GITHUB_FORCE_UPDATE', true );
+        define('WP_GITHUB_FORCE_UPDATE', true);
 
-        if ( is_admin() ) {
+        if (is_admin()) {
 
-            new CRWP_GitHub_Updater( array(
-                'slug' => plugin_basename(IWP_MMB_PLUGIN_DIR).'/'.'init.php',
+            new CRWP_GitHub_Updater(array(
+                'slug' => plugin_basename(IWP_MMB_PLUGIN_DIR) . '/' . 'init.php',
                 'proper_folder_name' => plugin_basename(IWP_MMB_PLUGIN_DIR),
                 'api_url' => 'https://api.github.com/repos/croemmich/crwd-client',
                 'raw_url' => 'https://raw.github.com/croemmich/crwd-client/master/init.php',
@@ -34,7 +60,8 @@ class CRWD_CLIENT {
         }
     }
 
-    function remove_dashboard_widgets() {
+    function remove_dashboard_widgets()
+    {
         global $wp_meta_boxes;
 
         unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
@@ -43,7 +70,8 @@ class CRWD_CLIENT {
         unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
     }
 
-    function map_meta_cap($caps, $cap, $user_id, $args) {
+    function map_meta_cap($caps, $cap, $user_id, $args)
+    {
         // disallow plugin editor
         if ($cap == 'edit_plugins') {
             $caps[] = 'do_not_allow';
@@ -51,28 +79,8 @@ class CRWD_CLIENT {
         return $caps;
     }
 
-    function fix_autologin() {
-        if (!empty($_GET['redirect_to'])) {
-            $query = parse_url($_GET['redirect_to'], PHP_URL_QUERY);
-            parse_str($query, $params);
-
-            if (!empty($params['auto_login'])) {
-                foreach($params as $key=>$value) {
-                    $_GET[$key] = $value;
-                    $_REQUEST[$key] = $value;
-                }
-                $_GET['iwpredirect'] = admin_url();
-                $_REQUEST['iwpredirect'] = admin_url();
-                $unset = array('redirect_to', 'reauth');
-                foreach($unset as $u) {
-                    unset($_GET[$u]);
-                    unset($_REQUEST[$u]);
-                }
-            }
-        }
-    }
-
-    function cleanup_plugins() {
+    function cleanup_plugins()
+    {
         // gravityforms
         remove_action('after_plugin_row_gravityforms/gravityforms.php', array('RGForms', 'plugin_row'));
 
@@ -81,9 +89,20 @@ class CRWD_CLIENT {
         remove_action('admin_print_styles', 'jwl_admin_style');
     }
 
+    function edit_mce_buttons($buttons)
+    {
+        $index = array_search('unlink', $buttons);
+        if ($index !== false) {
+            array_splice($buttons, $index + 1, 0, 'anchor');
+        } else {
+            $buttons[] = 'anchor';
+        }
+        return $buttons;
+    }
+
 }
 
-if(!defined('IWP_MMB_PLUGIN_DIR'))
+if (!defined('IWP_MMB_PLUGIN_DIR'))
     define('IWP_MMB_PLUGIN_DIR', $iwp_mmb_plugin_dir);
 
 new CRWD_CLIENT();
