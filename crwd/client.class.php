@@ -6,6 +6,7 @@ class CRWD_CLIENT {
         add_action('init', array($this, 'github_updater'));
         add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets'));
         add_filter('map_meta_cap', array($this, 'map_meta_cap'), 10, 4 );
+        add_action('wp_loaded', array($this, 'cleanup_plugins'), 20);
 
         $this->fix_autologin();
     }
@@ -69,6 +70,11 @@ class CRWD_CLIENT {
                 }
             }
         }
+    }
+
+    function cleanup_plugins() {
+        // remove gravityforms nag
+        remove_all_actions('after_plugin_row_gravityforms/gravityforms.php');
     }
 
 }
