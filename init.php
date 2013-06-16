@@ -4,7 +4,7 @@ Plugin Name: Chris Roemmich Web Developent Client
 Plugin URI: https://cr-wd.com
 Description: Maintenance and support plugin used by Chris Roemmich Web Development.
 Author: croemmich
-Version: 1.1.10.6
+Version: 1.1.10.7
 Author URI: https://cr-wd.com
 */
 
@@ -32,7 +32,7 @@ Author URI: https://cr-wd.com
  **************************************************************/
 
 if(!defined('IWP_MMB_CLIENT_VERSION'))
-	define('IWP_MMB_CLIENT_VERSION', '1.1.10.6');
+	define('IWP_MMB_CLIENT_VERSION', '1.1.10.7');
 
 
 if ( !defined('IWP_MMB_XFRAME_COOKIE')){
