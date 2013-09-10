@@ -29,7 +29,7 @@
     		$plugins = get_option('active_plugins');
     		
 			if(!function_exists('get_plugin_data'))
-				include_once( ABSPATH.'/wp-admin/includes/plugin.php');
+				include_once(ABSPATH . '/wp-admin/includes/plugin.php');
 				
     		$have_plugin = array();
     		foreach ($plugins as $plugin) {

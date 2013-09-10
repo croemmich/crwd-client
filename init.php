@@ -4,7 +4,7 @@ Plugin Name: Chris Roemmich Web Development Client
 Plugin URI: https://cr-wd.com
 Description: Maintenance and support plugin used by Chris Roemmich Web Development.
 Author: croemmich
-Version: 1.2.1.0
+Version: 1.2.2.0
 Author URI: https://cr-wd.com
 */
 
@@ -32,7 +32,7 @@ Author URI: https://cr-wd.com
  **************************************************************/
 
 if(!defined('IWP_MMB_CLIENT_VERSION'))
-	define('IWP_MMB_CLIENT_VERSION', '1.2.1.0');
+	define('IWP_MMB_CLIENT_VERSION', '1.2.2.0');
 
 
 if ( !defined('IWP_MMB_XFRAME_COOKIE')){
@@ -69,6 +69,7 @@ require_once("$iwp_mmb_plugin_dir/plugins/cleanup/cleanup.php");
 
 require_once("$iwp_mmb_plugin_dir/crwd/client.class.php");
 
+
 if( !function_exists ( 'iwp_mmb_filter_params' )) {
 	function iwp_mmb_filter_params( $array = array() ){
 		
@@ -89,9 +90,6 @@ if( !function_exists ( 'iwp_mmb_filter_params' )) {
 	}
 }
 
-
-
-
 if( !function_exists ('iwp_mmb_parse_request')) {
 	function iwp_mmb_parse_request()
 	{
@@ -105,7 +103,7 @@ if( !function_exists ('iwp_mmb_parse_request')) {
 		$data = base64_decode($HTTP_RAW_POST_DATA);
 		if ($data){
 			//$num = @extract(unserialize($data));
-			$unserialized_data = unserialize($data);
+			$unserialized_data = @unserialize($data);
 			if(isset($unserialized_data['params'])){ 
 				$unserialized_data['params'] = iwp_mmb_filter_params($unserialized_data['params']);
 			}
@@ -139,6 +137,7 @@ if( !function_exists ('iwp_mmb_parse_request')) {
 
 			$auth = $iwp_mmb_core->authenticate_message($action . $id, $signature, $id);
 			if ($auth === true) {
+				$GLOBALS['IWP_CLIENT_HISTORY_ID'] = $id;
 				
 				if(isset($params['username']) && !is_user_logged_in()){
 					$user = function_exists('get_user_by') ? get_user_by('login', $params['username']) : get_userdatabylogin( $params['username'] );
@@ -154,7 +153,7 @@ if( !function_exists ('iwp_mmb_parse_request')) {
 						/* in multisite network, please update database manualy */
 						if (empty($wpmu_version) || (function_exists('is_multisite') && !is_multisite())){
 							if( ! function_exists('wp_upgrade'))
-								include_once(ABSPATH.'wp-admin/includes/upgrade.php');
+								include_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 							
 							ob_clean();
 							@wp_upgrade();
