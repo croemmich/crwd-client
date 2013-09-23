@@ -663,7 +663,7 @@ class IWP_MMB_Core extends IWP_MMB_Helper
         $auto_login = isset($_GET['auto_login']) ? $_GET['auto_login'] : 0;
         $_SERVER['HTTP_REFERER']='';
 		if( !function_exists('is_user_logged_in') )
-			include_once(ABSPATH . 'wp-includes/pluggable.php');
+			include_once( ABSPATH.'wp-includes/pluggable.php' );
 		
 		if (( $auto_login && strlen(trim($username)) && !is_user_logged_in() ) || (isset($this->iwp_mmb_multisite) && $this->iwp_mmb_multisite )) {
 			$signature  = base64_decode($_GET['signature']);
