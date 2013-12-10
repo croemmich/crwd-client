@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Chris Roemmich Web Development Client
-Plugin URI: https://cr-wd.com
-Description: Maintenance and support plugin used by Chris Roemmich Web Development.
-Author: croemmich
-Version: 1.2.5.0
-Author URI: https://cr-wd.com
+Plugin Name: Logical Grape Client
+Plugin URI: https://logicalgrape.com
+Description: Maintenance and support plugin used by Logical Grape.
+Author: Logical Grape
+Version: 1.2.6.0
+Author URI: https://logicalgrape.com
 */
 
 /************************************************************
- * The plugin was modified by croemmich
- * Copyright (c) 2013 croemmich
+ * The plugin was modified by Logical Grape
+ * Copyright (c) 2013 Logical Grape
  ************************************************************/
 
 /************************************************************
@@ -32,7 +32,7 @@ Author URI: https://cr-wd.com
  **************************************************************/
 
 if(!defined('IWP_MMB_CLIENT_VERSION'))
-	define('IWP_MMB_CLIENT_VERSION', '1.2.5.0');
+	define('IWP_MMB_CLIENT_VERSION', '1.2.6.0');
 
 
 if ( !defined('IWP_MMB_XFRAME_COOKIE')){
