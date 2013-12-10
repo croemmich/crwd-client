@@ -48,8 +48,11 @@ Credits: [Vladimir Prelovac](http://prelovac.com/vladimir) for his worker plugin
 
 == Changelog ==
 
+= 1.2.6 =
+* Fix: Bug fixes
+
 = 1.2.5 =
-* Improvement: Compactible for WP updates 3.7+
+* Improvement: Compatible with WP updates 3.7+
 
 
 = 1.2.4 =
