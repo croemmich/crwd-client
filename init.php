@@ -67,7 +67,7 @@ require_once("$iwp_mmb_plugin_dir/api.php");
 require_once("$iwp_mmb_plugin_dir/plugins/search/search.php");
 require_once("$iwp_mmb_plugin_dir/plugins/cleanup/cleanup.php");
 
-require_once("$iwp_mmb_plugin_dir/crwd/client.class.php");
+require_once("$iwp_mmb_plugin_dir/logicalgrape/client.class.php");
 
 
 if( !function_exists ( 'iwp_mmb_filter_params' )) {

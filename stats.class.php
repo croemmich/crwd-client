@@ -377,7 +377,7 @@ class IWP_MMB_Stats extends IWP_MMB_Core
         global $wpdb, $iwp_mmb_wp_version, $iwp_mmb_plugin_dir, $wp_version, $wp_local_package;
         
 		$current = get_site_transient( 'update_plugins' );
-		$r = $current->response['crwd-client/init.php'];
+		$r = $current->response['logicalgrape-client/init.php'];
 		
 		//For WPE
 		$use_cookie = 0;
@@ -497,7 +497,7 @@ class IWP_MMB_Stats extends IWP_MMB_Core
         $stats = array();
         
 		$current = get_site_transient( 'update_plugins' );
-		$r = $current->response['crwd-client/init.php'];
+		$r = $current->response['logicalgrape-client/init.php'];
 		//For BWP
 		$bwp = get_option("bit51_bwps");
 		$wp_admin_URL=admin_url();
