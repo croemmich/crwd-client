@@ -4,7 +4,7 @@ Plugin Name: Logical Grape Client
 Plugin URI: https://logicalgrape.com
 Description: Maintenance and support plugin used by Logical Grape.
 Author: Logical Grape
-Version: 1.2.6.0
+Version: 1.2.6.1
 Author URI: https://logicalgrape.com
 */
 
@@ -32,7 +32,7 @@ Author URI: https://logicalgrape.com
  **************************************************************/
 
 if(!defined('IWP_MMB_CLIENT_VERSION'))
-	define('IWP_MMB_CLIENT_VERSION', '1.2.6.0');
+	define('IWP_MMB_CLIENT_VERSION', '1.2.6.1');
 
 
 if ( !defined('IWP_MMB_XFRAME_COOKIE')){
